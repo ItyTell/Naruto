@@ -17,6 +17,7 @@ class Button:
 
     def draw(self, screen, cords):
         screen.blit(self.text, cords)
+        pygame.draw.rect(screen, "white", self.rect, 2)
 
 
     def click(self):
@@ -44,8 +45,11 @@ class Main_menu:
             return False, False
     
         def run(self):
-            if self.running:
-                self.screen.fill("blue")
-                for button in self.buttons:
-                    button.draw(self.screen, (button.rect.x, button.rect.y))
-
+            self.screen.fill("blue")
+            for button in self.buttons:
+                button.draw(self.screen, (button.rect.x, button.rect.y))
+        
+        def button_check(self, cords):
+            for button in self.buttons:
+                if button.rect.collidepoint(cords):
+                    return button.click()
