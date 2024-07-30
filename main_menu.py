@@ -38,6 +38,7 @@ class Main_menu:
             self.height = screen.get_height()
     
         def start_game(self):
+            self.running= False
             return True, True
 
         def exit(self):

@@ -2,6 +2,7 @@
 import pygame 
 import json
 from main_menu import *
+from level import *
 
 
 
@@ -18,6 +19,7 @@ class Game:
         self.running = True
         self.main_menu = Main_menu(self.screen)
         self.game_started = False
+        self.level = Level(self.screen)
     
     def keys_pressed(self):
         for event in pygame.event.get():
@@ -36,6 +38,8 @@ class Game:
 
             if self.main_menu.running:
                 self.main_menu.run()
+            elif self.game_started:
+                self.level.run()
 
             pygame.display.flip()
             self.clock.tick(self.fps)  
